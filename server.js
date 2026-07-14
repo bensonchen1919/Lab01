@@ -4,6 +4,7 @@ import apiRouter from './routes/api.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+app.set("view engine", "ejs");
 
 app.use('/', pagesRouter);
 app.use("/api", apiRouter);
@@ -45,6 +46,10 @@ app.get('/api/info', (req, res) => {
 
 app.get('/api/error', (req, res) => {
   res.status(400).send("Bad request");
+});
+
+app.get("/about", (req, res) => {
+  res.render("about", { title: "About" });
 });
 
 app.listen(PORT, () => {
