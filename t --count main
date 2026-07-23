@@ -1,0 +1,10 @@
+*   [33m6226167[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Merge branch 'main' of https://github.com/bensonchen1919/Lab01
+[31m|[m[32m\[m  
+[31m|[m * [33maf3c7db[m Update project description in about.ejs
+* [32m|[m [33m1febc8c[m rewrite About page description
+[32m|[m[32m/[m  
+*   [33m7b31ff6[m Merge pull request #1 from bensonchen1919/feature/about-page
+[33m|[m[34m\[m  
+[33m|[m * [33mb014bc9[m[33m ([m[1;31morigin/feature/about-page[m[33m)[m add About page
+[33m|[m[33m/[m  
+* [33m3c04db4[m initial Express server with two routes

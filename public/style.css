@@ -1,0 +1,49 @@
+body {
+  font-family: sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+nav a {
+  margin-right: 1rem;
+}
+
+:root {
+  --color-bg: #fff;
+  --color-text: #222;
+  --color-link: blue;
+}
+
+body:has(.theme-toggle:checked) {
+  --color-bg: #1a1b26;
+  --color-text: #e4e7ef;
+  --color-link: #8ab4f8;
+}
+
+a {
+  color: var(--color-link);
+}
+
+.entries-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.entry-card {
+  border: 1px solid #ccc;
+  padding: 1rem;
+}

@@ -4,14 +4,28 @@ import apiRouter from './routes/api.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const entries = [
+  {
+    id: 1,
+    title: "First Entry",
+    body: "This is the first blog entry."
+  },
+  {
+    id: 2,
+    title: "Second Entry",
+    body: "This is the second blog entry."
+  },
+  {
+    id: 3,
+    title: "Third Entry",
+    body: "This is the third blog entry."
+  }
+];
 app.set("view engine", "ejs");
+app.use(express.static('public'));
 
 app.use('/', pagesRouter);
 app.use("/api", apiRouter);
-
-app.use((req, res) => {
-  res.status(404).send('Page not found.');
-});
 
 app.get('/', (req, res) => {
   res.send('Gutenhag, web!');
@@ -52,6 +66,33 @@ app.get("/about", (req, res) => {
   res.render("about", { title: "About" });
 });
 
+app.get("/entries", (req, res) => {
+  res.render("entries", {
+    title: "Entries",
+    entries
+  });
+});
+
+app.get("/entries/:id", (req, res) => {
+  const id = Number(req.params.id);
+
+  const entry = entries.find(entry => entry.id === id);
+
+  if (!entry) {
+    return res.status(404).send("Entry not found.");
+  }
+
+  res.render("entries", {
+    title: entry.title,
+    entries: [entry]
+  });
+});
+
+app.use((req, res) => {
+  res.status(404).send('Page not found.');
+});
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
+// work in progress

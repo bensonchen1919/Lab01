@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Units</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <%- include("partials/header") %>
+
+    <h1>Entries</h1>
+    <ul class="entries-list">
+      <% entries.forEach(entry => { %>
+        <li class="entry-card">
+          <%= entry.title %>
+        </li>
+      <% }); %>
+    </ul>
+  </body>
+</html>
