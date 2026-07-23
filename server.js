@@ -26,6 +26,7 @@ app.use(express.static('public'));
 
 app.use('/', pagesRouter);
 app.use("/api", apiRouter);
+app.use(express.json());
 
 app.get('/', (req, res) => {
   res.send('Gutenhag, web!');
@@ -86,6 +87,29 @@ app.get("/entries/:id", (req, res) => {
     title: entry.title,
     entries: [entry]
   });
+});
+
+app.post('/entries', (req, res) => {
+  const { title, body } = req.body;
+  const newEntry = {
+    id: entries.length + 1,
+    title,
+    body
+  };
+  entries.push(newEntry);
+  res.status(201).json(newEntry);
+});
+
+app.delete('/entries/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const index = entries.findIndex(entry => entry.id === id);
+
+  if (index === -1) {
+  return res.status(404).json({ error: 'Entry not found' });
+  }
+
+  entries.splice(index, 1);
+  res.status(204).send();
 });
 
 app.use((req, res) => {
